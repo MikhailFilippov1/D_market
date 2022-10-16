@@ -6,7 +6,7 @@ VALUES
  ('BUTTER', 245),
   ('MILK', 75),
    ('SALT', 5),
-    ('BACON', 545),
+    ('MEET', 545),
     ('APPLE', 90),
      ('ORANGE', 145),
       ('POTATO', 28),
