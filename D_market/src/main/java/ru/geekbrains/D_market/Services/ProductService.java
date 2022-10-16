@@ -34,7 +34,7 @@ public class ProductService {
         return productRepository.findAllByPriceBetween(minPrice, maxPrice);
     }
 
-//    public List<Product> filterMaxPrice(int maxPrice){
+//    public List<Product> filterMaxPrice(int maxPrice){        // ругается тут
 //        return productRepository.findAllByMaxPrice(maxPrice);
 //    }
 //

@@ -38,7 +38,7 @@ public class ProductController {
         return productService.filterBetween(minPrice, maxPrice);
     }
 
-//    @GetMapping("/products/filtermax")
+//    @GetMapping("/products/filtermax")    // ругается здесь
 //    public List<Product> filterMaxPrice(@RequestParam(name="max_price") int maxPrice){
 //        return productService.filterMaxPrice(maxPrice);
 //    }

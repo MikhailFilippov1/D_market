@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findAllByPriceBetween(int minPrice, int maxPrice);
-//    List<Product> findAllByMaxPrice(int maxPrice);
+//    List<Product> findAllByMaxPrice(int maxPrice); // Вроде бы должен парсить
 //    List<Product> findAllByMinPrice(int minPrice);
 }
