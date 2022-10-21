@@ -23,11 +23,18 @@ public class ProductController<ResponceEntity> {
     private final CategoryService categoryService;
 
     @GetMapping
-    public Page<ProductDto> findAll(@RequestParam(defaultValue = "1", name = "p") int pageIndex){
+    public Page<ProductDto> findAll(@RequestParam(defaultValue = "1", name = "p") int pageIndex
+//            ,
+//                                    @RequestParam(name = "minPrice", required = false) int minPrice,
+//                                    @RequestParam(name = "maxPrice", required = false) int maxPrice,
+//                                    @RequestParam(name = "titlePart", required = false) String titlePart
+    ){
         if(pageIndex < 1){
             pageIndex = 1;
         }
         return productService.findAll(pageIndex - 1, 5).map(ProductDto::new);
+//        return productService.find(pageIndex, minPrice, maxPrice, titlePart).map(ProductDto::new);
+
     }
 
     @GetMapping("/{id}")
@@ -45,6 +52,11 @@ public class ProductController<ResponceEntity> {
         product.setCategory(category);
         productService.save(product);
         return new ProductDto(product);
+    }
+
+    @PutMapping
+    public void updateProduct(@RequestBody ProductDto productDto){
+        productService.updateProductFromDto(productDto);
     }
 
     @DeleteMapping("/{id}")

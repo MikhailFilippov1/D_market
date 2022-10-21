@@ -61,15 +61,24 @@ angular.module('D_market-front', []).controller('indexController', function ($sc
                 return arr;
     }
 
-//    $scope.myUpdateProduct = function(1L){
-//                $http.get (contextPath + '/api/V1/products/{id}', 1L)
-//                    .then(function successCallback(response){
-//                    console.log(response.data);
-//                        $scope.updatableProduct = response.data;
-//                    }, function failureCallback(response){
-//                         alert(response.data.message);
-//                     });
-//            };
+    $scope.updateProduct = function(){
+                $http.put (contextPath + '/api/V1/products', $scope.updatableProduct)
+                    .then(function successCallback(response){
+                    $scope.loadProducts(currentPageIndex);
+                    $scope.updatableProduct = null;
+                    }, function failureCallback(response){
+                         alert(response.data.message);
+                     });
+            };
+
+    $scope.updateProductForm = function(productId){
+                    $http.get (contextPath + '/api/V1/products/' + productId)
+                        .then(function successCallback(response){
+                        $scope.updatableProduct = response.data;
+                        }, function failureCallback(response){
+                             alert(response.data.message);
+                         });
+                };
 
     $scope.loadProducts();
 });
