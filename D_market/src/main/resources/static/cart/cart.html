@@ -1,0 +1,33 @@
+<div>
+    <h1>КОРЗИНА ТОВАРОВ</h1>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <td>Наименование</td>
+            <td>Цена (руб. коп.)</td>
+            <td>Категория</td>
+            <td>Количество</td>
+            <td>Сумма</td>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="p in productList">
+            <td>{{p.title}}</td>
+            <td>{{p.price.toFixed(2)}}</td>
+            <td>{{p.categoryTitle}}</td>
+            <td>{{p.quantity}}</td>
+            <td>{{p.quantity * p.price}}</td>
+            <td>
+                <button class="btn btn-secondary" ng-click="deleteProduct(p.id)">Удалить</button>
+                <button class="btn btn-secondary" ng-click="navToInfoPage(p.id)">Информация</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p></p>
+    <!--       <span th:text="${'Количество продуктов: ' + products.size()}"/> -->
+    <p></p>
+    <button class="btn btn-secondary" ng-click="clearCart()">Очистить корзину</button>
+    <p></p>
+</div>

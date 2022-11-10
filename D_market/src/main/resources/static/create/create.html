@@ -1,0 +1,13 @@
+<div>
+    <h1>СОЗДАНИЕ ПРОДУКТОВ И ГАЛАНТЕРЕИ</h1>
+    <h3>Создать новый продукт</h3>
+    <form novalidate ng-submit = "createNewProduct()">
+        <input class="form-control" type="text" placeholder="Название" ng-model="newProduct.title">
+        <p></p>
+        <input class="form-control" type="number" placeholder="Цена" ng-model="newProduct.price">
+        <p></p>
+        <input class="form-control" type="text" placeholder="Категория" ng-model="newProduct.categoryTitle">
+        <p></p>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>

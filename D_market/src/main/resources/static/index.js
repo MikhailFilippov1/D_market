@@ -1,87 +1,46 @@
-angular.module('D_market-front', []).controller('indexController', function ($scope, $http){
-    const contextPath = 'http://localhost:8189/market';
-    let currentPageIndex = 1;
+(function(){
+    angular.module('market-front',['ngRoute']).config(config).run(run);
 
-    $scope.loadProducts = function (pageIndex = 1) {
-        currentPageIndex = pageIndex;
-        $http ({
-            url: contextPath + '/api/V1/products',
-            method: 'GET',
-            params: {
-                p: pageIndex
-                }
-        }).then(function(response){
-            $scope.productPage = response.data;
-            $scope.paginationArray = $scope.generatePagesIndexes(1, $scope.productPage.totalPages);
+    function config($routeProvider){
+        $routeProvider
+            .when('/', {
+                templateUrl: 'start/start.html',
+                controller: 'startController'
+            })
+            .when('/store', {
+                templateUrl: 'store/store.html',
+                controller: 'storeController'
+            })
+            .when('/edit/:productId', {
+                templateUrl: 'edit/edit.html',
+                controller: 'editController'
+            })
+            .when('/info/:productId', {
+                templateUrl: 'info/info.html',
+                controller: 'infoController'
+            })
+            .when('/create', {
+                templateUrl: 'create/create.html',
+                controller: 'createController'
+            })
+            .when('/cart', {
+                templateUrl: 'cart/cart.html',
+                controller: 'cartController'
+            })
+            .otherwise({
+                redirectTo: '/'
             });
-    };
-
-    $scope.changePrice = function (productId, delta){
-        $http ({
-            url: contextPath + '/product/changePrice',
-            method: 'GET',
-            params: {
-                productId: productId,
-                delta: delta
-            }
-        }).then(function (response) {
-            $scope.loadProducts();
-        });
-    };
-
-    $scope.createNewProduct = function(){
-        $http.post (contextPath + '/api/V1/products', $scope.newProduct)
-            .then(function successCallback(response){
-                $scope.loadProducts(currentPageIndex);
-                $scope.newProduct = null;
-            }, function failureCallback(response){
-                 alert(response.data.message);
-             });
     }
 
-    $scope.deleteProduct = function (product){
-        $http({
-            url: contextPath + '/api/V1/products/' + product.id,
-            method: 'DELETE',
-
-        }).then(function (response){
-            $scope.loadProducts(currentPageIndex);
-        });
-    };
-
-    $scope.loadProduct = function (product){
-            alert(product.title);
-        };
-
-    $scope.generatePagesIndexes = function(startPage, endPage){
-            let arr = [];
-                for(let i = startPage; i < endPage + 1; i++){
-                    arr.push(i);
-                }
-                return arr;
+    function run($rootScope, $http){
     }
+})();
 
-    $scope.updateProduct = function(){
-                $http.put (contextPath + '/api/V1/products', $scope.updatableProduct)
-                    .then(function successCallback(response){
-                    $scope.loadProducts(currentPageIndex);
-                    $scope.updatableProduct = null;
-                    }, function failureCallback(response){
-                         alert(response.data.message);
-                     });
-            };
+angular.module('market-front').controller('indexController', function ($rootScope, $scope, $http){
+    const contextPath = 'http://localhost:8189/market/';
 
-    $scope.updateProductForm = function(productId){
-                    $http.get (contextPath + '/api/V1/products/' + productId)
-                        .then(function successCallback(response){
-                        $scope.updatableProduct = response.data;
-                        }, function failureCallback(response){
-                             alert(response.data.message);
-                         });
-                };
-
-    $scope.loadProducts();
 });
+
 
 
 
