@@ -3,7 +3,7 @@ package ru.geekbrains.D_market.dtos;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
-import ru.geekbrains.D_market.Models.Product;
+import ru.geekbrains.D_market.models.Product;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -24,7 +24,7 @@ public class ProductDto {
     @NotNull(message = "Товар должен иметь категорию\n")
     private String categoryTitle;
 
-    @Min(value = 1, message = "Количество товара не может быть меньше 1\n")
+//    @Min(value = 1, message = "Количество товара не может быть меньше 1\n")
     private int quantity;
 
     public ProductDto(Product product) {

@@ -1,4 +1,4 @@
-angular.module('market-front').controller('storeController', function ($scope, $http, $location){
+angular.module('market-front').controller('storeController', function ($scope, $http, $localStorage, $location){
     const contextPath = 'http://localhost:8189/market/';
     let currentPageIndex = 1;
 
@@ -59,5 +59,12 @@ angular.module('market-front').controller('storeController', function ($scope, $
                   });
           }
 
+    $scope.isUserAdmin = function(){
+                    if($localStorage.MarketUser.username == "admin"){   //Переделать на проверку прав позже
+                        return true;
+                    } else {
+                        return false;
+                    }
+        }
      $scope.loadProducts();
 });

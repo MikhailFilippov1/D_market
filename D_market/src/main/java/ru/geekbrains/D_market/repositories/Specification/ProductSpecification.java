@@ -1,7 +1,7 @@
 package ru.geekbrains.D_market.repositories.Specification;
 
 import org.springframework.data.jpa.domain.Specification;
-import ru.geekbrains.D_market.Models.Product;
+import ru.geekbrains.D_market.models.Product;
 
 public class ProductSpecification {
 

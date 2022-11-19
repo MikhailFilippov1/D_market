@@ -1,16 +1,15 @@
-package ru.geekbrains.D_market.Models;
+package ru.geekbrains.D_market.models;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "categories")
+@Table(name = "products")
 @Data
 @NoArgsConstructor
-public class Category {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +19,10 @@ public class Category {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(mappedBy = "category")
-    private List<Product> products;
+    @Column(name = "price")
+    private int price;
+
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
 }

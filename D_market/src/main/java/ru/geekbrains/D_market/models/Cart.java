@@ -1,10 +1,9 @@
-package ru.geekbrains.D_market.Models;
+package ru.geekbrains.D_market.models;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 @Component
 @Data

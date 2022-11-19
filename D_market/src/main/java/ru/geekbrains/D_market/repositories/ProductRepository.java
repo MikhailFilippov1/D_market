@@ -3,8 +3,7 @@ package ru.geekbrains.D_market.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
-import ru.geekbrains.D_market.Models.Product;
-import ru.geekbrains.D_market.dtos.ProductDto;
+import ru.geekbrains.D_market.models.Product;
 
 import java.util.List;
 
