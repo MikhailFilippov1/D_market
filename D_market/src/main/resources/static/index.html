@@ -37,6 +37,7 @@
                     <td>
                         <button class="btn btn-secondary" ng-click="loadProduct(p)">Информация о продукте</button>
                         <button class="btn btn-secondary" ng-click="deleteProduct(p)">Удалить продукт</button>
+                        <button class="btn btn-secondary" ng-click="updateProductForm(p.id)">Изменить продукт</button>
                     </td>
             </tr>
             </tbody>
@@ -64,12 +65,14 @@
     </form>
     <p></p>
     <h3>Изменить продукт</h3>
-    <form novalidate ng-submit = "myUpdateProduct(1)">
-        <input class="form-control" type="text" placeholder="{{updatableProduct.title}}" ng-model="updatableProduct.title">
+    <form novalidate ng-submit = "updateProduct()">
+        <input class="form-control" type="number" readonly placeholder="ID" ng-model="updatableProduct.id">
         <p></p>
-        <input class="form-control" type="number" placeholder="updatableProduct.price " ng-model="updatableProduct.price">
+        <input class="form-control" type="text" placeholder="Название" ng-model="updatableProduct.title">
         <p></p>
-        <input class="form-control" type="text" placeholder="updatableProduct.categoryTitle " ng-model="updatableProduct.categoryTitle">
+        <input class="form-control" type="number" placeholder="Цена" ng-model="updatableProduct.price">
+        <p></p>
+        <input class="form-control" type="text" placeholder="Категория" ng-model="updatableProduct.categoryTitle">
         <p></p>
         <button type="submit" class="btn btn-primary">Сохранить</button>
     </form>
