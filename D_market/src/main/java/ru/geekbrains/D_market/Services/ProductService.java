@@ -1,22 +1,17 @@
 package ru.geekbrains.D_market.Services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.D_market.Models.Product;
 import ru.geekbrains.D_market.repositories.ProductRepository;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService {
-    private ProductRepository productRepository;
-
-    @Autowired
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+    private final ProductRepository productRepository;
 
     public Optional<Product> findById(Long id){
         return productRepository.findById(id);
@@ -26,7 +21,24 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public void create(Product product){
+    public Product create(Product product){
         productRepository.saveAndFlush(product);
+        return product;
     }
+
+    public void deleteById(Long id){
+        productRepository.deleteById(id);
+    }
+
+    public List<Product> filterBetween(int minPrice, int maxPrice){
+        return productRepository.findAllByPriceBetween(minPrice, maxPrice);
+    }
+
+//    public List<Product> filterMaxPrice(int maxPrice){        // ругается тут
+//        return productRepository.findAllByMaxPrice(maxPrice);
+//    }
+//
+//    public List<Product> filterMinPrice(int minPrice){
+//        return productRepository.findAllByMinPrice(minPrice);
+//    }
 }
