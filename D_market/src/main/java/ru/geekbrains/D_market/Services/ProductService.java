@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import ru.geekbrains.D_market.Models.Cart;
 import ru.geekbrains.D_market.Models.Category;
 import ru.geekbrains.D_market.Models.Product;
 import ru.geekbrains.D_market.dtos.ProductDto;
@@ -13,11 +14,8 @@ import ru.geekbrains.D_market.repositories.ProductRepository;
 import ru.geekbrains.D_market.repositories.Specification.ProductSpecification;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import static java.lang.Math.abs;
 
 @Service
 @RequiredArgsConstructor
