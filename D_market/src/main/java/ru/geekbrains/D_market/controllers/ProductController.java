@@ -40,39 +40,6 @@ public class ProductController<ResponseEntity> {
 //        return productService.find(pageIndex, minPrice, maxPrice, titlePart).map(ProductDto::new);
     }
 
-//    @GetMapping("/cart/{id}")
-//    public void addToCart(@PathVariable Long id) {
-//        Cart cart = new Cart();
-//        cart.setProductIdToCart(id);
-//    }
-//
-//    @GetMapping("/cart")        //ВОПРОС: Код этого метода лучше держать в Cart(){} ?
-//    public List<ProductDto> findAllFromCart() {
-//        ArrayList<Cart.OrderLine> orderList = Cart.getCart();
-//        List<ProductDto> productDtoList = new ArrayList<>();
-//        ProductDto productDto;
-//
-//        for (int i = 0; i < orderList.size(); i++){
-//            Long tmpId;
-//            tmpId = orderList.get(i).productId;
-//            productDto = new ProductDto(productService.findById(tmpId).orElseThrow(() -> new ResourceNotFoundException("Product id: " + tmpId + " not found")));
-//            productDto.setQuantity(orderList.get(i).quantity);
-//            productDtoList.add(productDto);
-//        }
-//        return productDtoList;
-//    }
-//
-//    @GetMapping("/cart/clear")
-//    public void removeAllFromCart() {
-//        ArrayList<Cart.OrderLine> orderList = Cart.getCart();
-//        orderList.clear();
-//    }
-//
-//    @GetMapping("/cart/clear/{id}")
-//    public void removeIdFromCart(@PathVariable Long id) {
-//        cart.clearProductIdFromCart(id);
-//    }
-
     @GetMapping("/{id}")
     public ProductDto findById(@PathVariable Long id){
         Product product = productService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product id: " + id + " not found"));

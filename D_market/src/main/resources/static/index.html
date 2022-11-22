@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="market-front">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Магазин "ЗА УГЛОМ"</title>
@@ -12,7 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
 </head>
 
-<body>
+<body ng-app="market-front">
     <div class="container" >
         <div ng-controller="indexController">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -24,14 +24,22 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#!/store" style="font-weight: bold;">КАТАЛОГ</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#!/auth" style="font-weight: bold;">Войти</a>
+                        <li class="nav-item" ng-show="!isUserLoggedIn()">
+                            <form class="align-middle"  ng-submit = "tryToAuth()">
+                                <div class="input-group input-group-sn" style="padding: 4px;">
+                                    <input id="navLoginField" class="form-control" type="text"  placeholder="login" ng-model="user.username" aria-describedby="inputGroup-sizing-sm" style="margin-left: 10px;">
+                                    <p></p>
+                                    <input id="navPasswordField" class="form-control" type="password" placeholder="password" ng-model="user.password" aria-describedby="inputGroup-sizing-sm" style="margin-left: 10px;">
+                                    <p></p>
+                                    <button id="navLoginSubmit" type="submit" class="btn btn-outline-warning btn-sm" style="margin-left: 10px;">Войти</button>
+                                </div>
+                            </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" ng-show="isUserLoggedIn()" href="#!/cart" style="font-weight: bold;">Корзина</a>
+                            <a class="nav-link" href="#!/cart" style="font-weight: bold;">Корзина</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" ng-show="isUserLoggedIn()" href="#!/out" style="font-weight: bold;">Выйти</a>
+                        <li class="nav-item" ng-show="isUserLoggedIn()" style="font-weight: bold; pudding:4px;">
+                            <button class="btn btn-outline-secondary btn-sm" ng-click="tryToLogout()">Выйти</button>
                         </li>
                     </ul>
 
@@ -50,8 +58,6 @@
         <script src="info/info.js"></script>
         <script src="create/create.js"></script>
         <script src="cart/cart.js"></script>
-        <script src="auth/auth.js"></script>
-        <script src="out/out.js"></script>
  <!--          <script src="reg/reg.js"></script> -->
 </body>
 </html>
