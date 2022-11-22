@@ -28,7 +28,6 @@ angular.module('market-front').controller('cartController', function ($scope, $h
      }
 
      $scope.deleteProduct = function (productId){
-     console.log(productId);
              $http({
                  url: contextPath + 'api/V1/products/cart/clear/' + productId,
                  method: 'GET',
@@ -38,12 +37,20 @@ angular.module('market-front').controller('cartController', function ($scope, $h
              });
      }
 
+     $scope.checkOut = function(){
+            alert('Денег НЕТ! Но вы держитесь.');
+            }
+
      $scope.sumF=function(a){
          $scope.sumEnd=0;
          for(let i=0;i<a.length;i++){
            $scope.sumEnd +=parseInt(a[i]);
          }
        }
+
+       $scope.navToStorePage = function(){
+               $location.path('/store');
+           }
 
      $scope.loadCart();
 });

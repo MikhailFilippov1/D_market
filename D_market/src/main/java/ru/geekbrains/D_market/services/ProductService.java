@@ -1,13 +1,12 @@
-package ru.geekbrains.D_market.Services;
+package ru.geekbrains.D_market.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import ru.geekbrains.D_market.Models.Cart;
-import ru.geekbrains.D_market.Models.Category;
-import ru.geekbrains.D_market.Models.Product;
+import ru.geekbrains.D_market.models.Category;
+import ru.geekbrains.D_market.models.Product;
 import ru.geekbrains.D_market.dtos.ProductDto;
 import ru.geekbrains.D_market.exceptions.ResourceNotFoundException;
 import ru.geekbrains.D_market.repositories.ProductRepository;

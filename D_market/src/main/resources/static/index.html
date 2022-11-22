@@ -9,6 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
 </head>
 
 <body>
@@ -18,13 +19,19 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#!/" style="font-weight: bold;">D market</a>
+                            <a class="nav-link" href="#!/" style="font-weight: bold;">Главная</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#!/store" style="font-weight: bold;">КАТАЛОГ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#!/cart" style="font-weight: bold;">КОРЗИНА</a>
+                            <a class="nav-link" href="#!/auth" style="font-weight: bold;">Войти</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" ng-show="isUserLoggedIn()" href="#!/cart" style="font-weight: bold;">Корзина</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" ng-show="isUserLoggedIn()" href="#!/out" style="font-weight: bold;">Выйти</a>
                         </li>
                     </ul>
 
@@ -40,8 +47,11 @@
         <script src="store/store.js"></script>
         <script src="start/start.js"></script>
         <script src="edit/edit.js"></script>
-        <script src="create/create.js"></script>
         <script src="info/info.js"></script>
+        <script src="create/create.js"></script>
         <script src="cart/cart.js"></script>
+        <script src="auth/auth.js"></script>
+        <script src="out/out.js"></script>
+ <!--          <script src="reg/reg.js"></script> -->
 </body>
 </html>

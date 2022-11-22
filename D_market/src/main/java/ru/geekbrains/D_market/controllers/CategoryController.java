@@ -1,12 +1,12 @@
-package ru.geekbrains.D_market.Controllers;
+package ru.geekbrains.D_market.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.geekbrains.D_market.Models.Category;
-import ru.geekbrains.D_market.Services.CategoryService;
+import ru.geekbrains.D_market.models.Category;
+import ru.geekbrains.D_market.services.CategoryService;
 import ru.geekbrains.D_market.dtos.CategoryDto;
 import ru.geekbrains.D_market.exceptions.ResourceNotFoundException;
 

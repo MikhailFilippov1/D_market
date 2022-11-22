@@ -19,9 +19,9 @@
             </td>
             <td>
                 <button class="btn btn-secondary" ng-click="navToInfoPage(p.id)">Информация</button>
-                <button class="btn btn-secondary" ng-click="deleteProduct(p)">Удалить</button>
-                <button class="btn btn-secondary" ng-click="navToEditPage(p.id)">Изменить</button>
-                <button class="btn btn-secondary" ng-click="addToCart(p)">В корзину</button>
+                <button class="btn btn-secondary" ng-show="!isUserAdmin()" ng-click="addToCart(p)">В корзину</button>
+                <button class="btn btn-secondary" ng-show="isUserAdmin()" ng-click="deleteProduct(p)">Удалить</button>
+                <button class="btn btn-secondary" ng-show="isUserAdmin()" ng-click="navToEditPage(p.id)">Изменить</button>
             </td>
         </tr>
         </tbody>
@@ -36,6 +36,6 @@
         </ul>
     </nav>
     <p></p>
-    <button class="btn btn-secondary" ng-click="navToCreatePage()">Создать товар</button>
+    <button class="btn btn-secondary" ng-show="isUserAdmin()" ng-click="navToCreatePage()">Создать товар</button>
     <p></p>
 </div>

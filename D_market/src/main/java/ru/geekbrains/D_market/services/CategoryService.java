@@ -1,8 +1,8 @@
-package ru.geekbrains.D_market.Services;
+package ru.geekbrains.D_market.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.geekbrains.D_market.Models.Category;
+import ru.geekbrains.D_market.models.Category;
 import ru.geekbrains.D_market.repositories.CategoryRepository;
 
 import java.util.Optional;

@@ -1,5 +1,5 @@
 (function(){
-    angular.module('market-front',['ngRoute']).config(config).run(run);
+    angular.module('market-front',['ngRoute', 'ngStorage']).config(config).run(run);
 
     function config($routeProvider){
         $routeProvider
@@ -27,6 +27,14 @@
                 templateUrl: 'cart/cart.html',
                 controller: 'cartController'
             })
+            .when('/auth', {
+                templateUrl: 'auth/auth.html',
+                controller: 'authController'
+            })
+            .when('/out', {
+                templateUrl: 'out/out.html',
+                controller: 'logoutController'
+            })
             .otherwise({
                 redirectTo: '/'
             });
@@ -36,9 +44,8 @@
     }
 })();
 
-angular.module('market-front').controller('indexController', function ($rootScope, $scope, $http){
+angular.module('market-front').controller('indexController', function ($scope, $rootScope,  $http){
     const contextPath = 'http://localhost:8189/market/';
-
 });
 
 

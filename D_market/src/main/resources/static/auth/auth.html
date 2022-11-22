@@ -1,0 +1,11 @@
+<div class="container" ng-controller="authController">
+    <h1>МАГАЗИН ПРОДУКТОВ И ГАЛАНТЕРЕИ</h1>
+    <h3>Вход в учетную запись</h3>
+    <form class="align-middle"  ng-submit = "tryToAuth()">
+        <input id="navLoginField" class="form-control" type="text"  placeholder="login" ng-model="user.username" aria-describedby="inputGroup-sizing-sm" style="...">
+        <p></p>
+        <input id="navPasswordField" class="form-control" type="password" placeholder="password" ng-model="user.password" aria-describedby="inputGroup-sizing-sm" style="...">
+        <p></p>
+        <button id="navLoginSubmit" type="submit" class="btn btn-outline-warning btn-sm">Войти</button>
+    </form>
+</div>

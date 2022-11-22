@@ -2,8 +2,7 @@ package ru.geekbrains.D_market.dtos;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.geekbrains.D_market.Models.Category;
-import ru.geekbrains.D_market.Models.Product;
+import ru.geekbrains.D_market.models.Category;
 
 import java.util.List;
 import java.util.stream.Collectors;
