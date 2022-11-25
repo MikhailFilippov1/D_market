@@ -6,7 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.geekbrains.D_market.models.Cart;
+import ru.geekbrains.D_market.dtos.Cart;
 import ru.geekbrains.D_market.models.Category;
 import ru.geekbrains.D_market.models.Product;
 import ru.geekbrains.D_market.services.CategoryService;
@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 public class ProductController<ResponseEntity> {
     private final ProductService productService;
     private final CategoryService categoryService;
-    private final Cart cart;
 
     @GetMapping
     public Page<ProductDto> findAll(@RequestParam(defaultValue = "1", name = "p") int pageIndex

@@ -4,7 +4,13 @@ VALUES
 ('FOOD'),
  ('MATTER');
 
-CREATE TABLE IF NOT EXISTS products (id bigserial primary key, title VARCHAR(255), price int, category_id bigint references categories (id));
+CREATE TABLE IF NOT EXISTS products (
+        id                  bigserial primary key,
+        title               VARCHAR(255),
+        price               int,
+        category_id bigint  references categories (id),
+        created_at          timestamp default current_timestamp,
+        updated_at          timestamp default current_timestamp);
 INSERT INTO products (title, price, category_id)
 VALUES
 ('BREAD', 45, 1),

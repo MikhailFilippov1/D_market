@@ -51,7 +51,7 @@ angular.module('market-front').controller('storeController', function ($scope, $
 
      $scope.addToCart = function (product){
                   $http({
-                      url: contextPath + 'api/V1/products/cart/' + product.id,
+                      url: contextPath + 'api/V1/cart/add/' + product.id,
                       method: 'GET',
 
                   }).then(function (response){
