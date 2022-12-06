@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/D_market/D_market.iml" filepath="$PROJECT_DIR$/D_market/D_market.iml" />
+      <module fileurl="file://$PROJECT_DIR$/D_market_MS/D_market_MS.iml" filepath="$PROJECT_DIR$/D_market_MS/D_market_MS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/D_market_MS/api/api.iml" filepath="$PROJECT_DIR$/D_market_MS/api/api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/D_market_MS/cart-service/cart-service.iml" filepath="$PROJECT_DIR$/D_market_MS/cart-service/cart-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/D_market_MS/core-service/core-service.iml" filepath="$PROJECT_DIR$/D_market_MS/core-service/core-service.iml" />
     </modules>
   </component>
 </project>
