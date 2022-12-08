@@ -4,8 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/D_market_MS/D_market_MS.iml" filepath="$PROJECT_DIR$/D_market_MS/D_market_MS.iml" />
       <module fileurl="file://$PROJECT_DIR$/D_market_MS/api/api.iml" filepath="$PROJECT_DIR$/D_market_MS/api/api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/D_market_MS/auth-service/auth-service.iml" filepath="$PROJECT_DIR$/D_market_MS/auth-service/auth-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/D_market_MS/cart-service/cart-service.iml" filepath="$PROJECT_DIR$/D_market_MS/cart-service/cart-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/D_market_MS/core-service/core-service.iml" filepath="$PROJECT_DIR$/D_market_MS/core-service/core-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/D_market_MS/front-service/front-service.iml" filepath="$PROJECT_DIR$/D_market_MS/front-service/front-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/D_market_MS/gateway/gateway.iml" filepath="$PROJECT_DIR$/D_market_MS/gateway/gateway.iml" />
     </modules>
   </component>
 </project>

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.geekbrains.D_market.api.MarketError;
 import ru.geekbrains.D_market.api.ResourceNotFoundException;
-import ru.geekbrains.D_market.core.exceptions.DataValidationException;
 
 @Component
 @ControllerAdvice
@@ -17,8 +16,10 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(new MarketError(e.getMessage()), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler
-    public ResponseEntity<?> catchValidationException(DataValidationException e){
-        return new ResponseEntity<>(new MarketError(e.getMessages()), HttpStatus.BAD_REQUEST);
-    }
+//    @ExceptionHandler
+//    public ResponseEntity<?> catchValidationException(DataValidationException e){
+//        return new ResponseEntity<>(new MarketError(e.getMessages()), HttpStatus.BAD_REQUEST);
+//    }
 }
+
+
