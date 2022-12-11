@@ -51,7 +51,7 @@ angular.module('market-front').controller('storeController', function ($scope, $
 
      $scope.addToCart = function (product){
                   $http({
-                      url: contextPath + 'api/V1/products/cart/' + product.id,
+                      url: contextPath + 'api/V1/cart/add/' + product.id,
                       method: 'GET',
 
                   }).then(function (response){
@@ -60,11 +60,14 @@ angular.module('market-front').controller('storeController', function ($scope, $
           }
 
     $scope.isUserAdmin = function(){
-                    if($localStorage.MarketUser.username == "admin"){   //Переделать на проверку прав позже
-                        return true;
-                    } else {
-                        return false;
-                    }
+         if(!$localStorage.MarketUser){
+                    return false;
+                }
+            if($localStorage.MarketUser.username == "admin"){   //Переделать на проверку прав позже
+                return true;
+            } else {
+                return false;
+            }
         }
      $scope.loadProducts();
 });

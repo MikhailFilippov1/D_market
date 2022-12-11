@@ -4,10 +4,10 @@ angular.module('market-front').controller('cartController', function ($scope, $h
 
     $scope.loadCart = function () {
         $http ({
-            url: contextPath + 'api/V1/products/cart',
+            url: contextPath + 'api/V1/cart',
             method: 'GET',
         }).then(function successCallback(response){
-            $scope.productList = response.data;
+            $scope.cart = response.data;
             }, function failureCallback(response){
             alert(response.data.messages);
             });
@@ -20,7 +20,7 @@ angular.module('market-front').controller('cartController', function ($scope, $h
 
     $scope.clearCart = function (){
              $http({
-                 url: contextPath + 'api/V1/products/cart/clear',
+                 url: contextPath + 'api/V1/cart/clear',
                  method: 'GET',
              }).then(function (response){
                  $scope.loadCart();
@@ -29,7 +29,7 @@ angular.module('market-front').controller('cartController', function ($scope, $h
 
      $scope.deleteProduct = function (productId){
              $http({
-                 url: contextPath + 'api/V1/products/cart/clear/' + productId,
+                 url: contextPath + 'api/V1/cart/clear/' + productId,
                  method: 'GET',
 
              }).then(function (response){
@@ -51,6 +51,19 @@ angular.module('market-front').controller('cartController', function ($scope, $h
        $scope.navToStorePage = function(){
                $location.path('/store');
            }
+
+   $scope.changeQuantity = function (productId, delta){
+           $http ({
+               url: contextPath + 'api/V1/cart/changeQuantity',
+               method: 'GET',
+               params: {
+                   productId: productId,
+                   delta: delta
+               }
+           }).then(function (response) {
+               $scope.loadCart();
+           });
+       };
 
      $scope.loadCart();
 });

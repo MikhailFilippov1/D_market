@@ -5,28 +5,34 @@
         <tr>
             <td>Наименование</td>
             <td>Цена (руб. коп.)</td>
-            <td>Категория</td>
             <td>Количество</td>
             <td>Сумма</td>
         </tr>
         </thead>
 
         <tbody>
-        <tr ng-repeat="p in productList">
-            <td>{{p.title}}</td>
-            <td>{{p.price.toFixed(2)}}</td>
-            <td>{{p.categoryTitle}}</td>
-            <td>{{p.quantity}}</td>
-            <td>{{p.quantity * p.price}}</td>
+        <tr ng-repeat="item in cart.items">
+            <td>{{item.productTitle}}</td>
+            <td>{{item.pricePerProduct.toFixed(2)}}</td>
             <td>
-                <button class="btn btn-secondary" ng-click="deleteProduct(p.id)">Удалить</button>
-                <button class="btn btn-secondary" ng-click="navToInfoPage(p.id)">Информация</button>
+                <button class="btn btn-primary" ng-click="changeQuantity(item.productId, -1)">-</button>
+                    {{item.quantity}}
+                <button class="btn btn-primary" ng-click="changeQuantity(item.productId, 1)">+</button>
             </td>
+            <td>{{item.quantity * item.price.toFixed(2)}}</td>
+            <td>
+                <button class="btn btn-secondary" ng-click="deleteProduct(item.productId)">Удалить</button>
+                <button class="btn btn-secondary" ng-click="navToInfoPage(item.productId)">Информация</button>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">ИТОГО:</td>
+            <td></td>
+            <td></td>
+            <td style="font-weight: bold;">{{cart.totalPrice.toFixed(2)}}</td>
         </tr>
         </tbody>
     </table>
-    <p></p>
-    <!--       <span th:text="${'Количество продуктов: ' + products.size()}"/> -->
     <p></p>
     <button class="btn btn-secondary" ng-click="navToStorePage()">В каталог</button>
     <button class="btn btn-secondary" ng-click="clearCart()">Очистить корзину</button>

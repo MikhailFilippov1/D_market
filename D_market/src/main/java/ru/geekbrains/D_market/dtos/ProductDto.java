@@ -24,14 +24,10 @@ public class ProductDto {
     @NotNull(message = "Товар должен иметь категорию\n")
     private String categoryTitle;
 
-//    @Min(value = 1, message = "Количество товара не может быть меньше 1\n")
-    private int quantity;
-
     public ProductDto(Product product) {
         this.id = product.getId();
         this.title = product.getTitle();
         this.price = product.getPrice();
         this.categoryTitle = product.getCategory().getTitle();
-        this.quantity = 1;
     }
 }

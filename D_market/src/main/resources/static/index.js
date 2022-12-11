@@ -27,25 +27,57 @@
                 templateUrl: 'cart/cart.html',
                 controller: 'cartController'
             })
-            .when('/auth', {
-                templateUrl: 'auth/auth.html',
-                controller: 'authController'
-            })
-            .when('/out', {
-                templateUrl: 'out/out.html',
-                controller: 'logoutController'
-            })
             .otherwise({
                 redirectTo: '/'
             });
     }
 
-    function run($rootScope, $http){
+    function run($rootScope, $http, $localStorage){
+        if($localStorage.MarketUser){
+            $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.MarketUser.token;
+        }
     }
 })();
 
-angular.module('market-front').controller('indexController', function ($scope, $rootScope,  $http){
+angular.module('market-front').controller('indexController', function ($rootScope, $scope, $http, $localStorage){
     const contextPath = 'http://localhost:8189/market/';
+
+    $scope.tryToAuth = function(){
+         $http.post (contextPath + 'auth', $scope.user)
+              .then(function successCallback(response){
+                    if(response.data.token){
+                    $http.defaults.headers.common.Authorization = 'Bearer ' + response.data.token;
+                    $localStorage.MarketUser = {username: $scope.user.username, token: response.data.token};
+                    $scope.user.username = null;
+                    $scope.user.password = null;
+                    }
+              }, function failureCallback(response){
+                         alert(response.data.messages);
+                     });
+        }
+
+     $scope.tryToLogout = function(){
+            $scope.clearUser();
+            if($scope.user.username){
+                $scope.user.username = null;
+            }
+            if($scope.user.password){
+                $scope.user.password = null;
+            }
+        };
+
+    $rootScope.isUserLoggedIn = function(){
+        if($localStorage.MarketUser){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    $scope.clearUser = function(){
+        delete $localStorage.MarketUser;
+        $http.defaults.headers.common.Authorization = '';
+    };
 });
 
 
