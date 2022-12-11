@@ -2,9 +2,24 @@ angular.module('market-front').controller('cartController', function ($scope, $h
     const contextPath = 'http://localhost:5555/cart/';
     let currentPageIndex = 1;
 
+//    $scope.loadCart = function (pageIndex = 1) { //TODO: pagination need
+//        currentPageIndex = pageIndex;
+//        $http ({
+//            url: contextPath + 'api/V1/cart',
+//            method: 'GET',
+//            params: {
+//                p: pageIndex
+//            }
+//        }).then(function successCallback(response){
+//            $scope.cartPage = response.data;
+//            $scope.paginationArray = $scope.generatePagesIndexes(1, $scope.cartPage.totalPages);
+//            }, function failureCallback(response){
+//            alert(response.data.messages);
+//            });
+//    }
+
     $scope.loadCart = function () {
         $http ({
-       //      $http.defaults.headers.common['Access-Control-Allow-Origin'] = "*";
             url: contextPath + 'api/V1/cart',
             method: 'GET',
         }).then(function successCallback(response){
@@ -13,6 +28,14 @@ angular.module('market-front').controller('cartController', function ($scope, $h
             alert(response.data.messages);
             });
     }
+
+    $scope.generatePagesIndexes = function(startPage, endPage){
+                    let arr = [];
+                        for(let i = startPage; i < endPage + 1; i++){
+                            arr.push(i);
+                        }
+                        return arr;
+            }
 
     $scope.navToInfoPage = function(productId){
               console.log('Переход в окно информации');
@@ -61,7 +84,7 @@ angular.module('market-front').controller('cartController', function ($scope, $h
 
        $scope.order = function(){
            $http.post('http://localhost:5555/core/api/V1/orders');
-
+            alert('Заказ успешно сформирован!');
            $location.path('/store');
        }
 
