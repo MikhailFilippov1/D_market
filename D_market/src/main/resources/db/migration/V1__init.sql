@@ -1,10 +1,10 @@
-CREATE TABLE IF NOT EXISTS categories (id bigserial primary key, title VARCHAR(255));
+CREATE TABLE categories (id bigserial primary key, title VARCHAR(255));
 INSERT INTO categories (title)
 VALUES
 ('FOOD'),
  ('MATTER');
 
-CREATE TABLE IF NOT EXISTS products (
+CREATE TABLE products (
         id                  bigserial primary key,
         title               VARCHAR(255),
         price               int,
@@ -70,3 +70,22 @@ values
 (1, 1),
 (2, 2),
 (2, 3);
+
+CREATE TABLE orders (
+        id                  bigserial primary key,
+        user_id             bigint not null references users(id),
+        total_price         int not null,
+        address             VARCHAR(255),
+        e_mail              VARCHAR(255),
+        created_at          timestamp default current_timestamp,
+        updated_at          timestamp default current_timestamp);
+
+CREATE TABLE order_items (
+        id                  bigserial primary key,
+        product_id          bigint not null references products(id),
+        order_id            bigint not null references orders(id),
+        quantity            int not null,
+        price_per_product   int not null,
+        price               int not null,
+        created_at          timestamp default current_timestamp,
+        updated_at          timestamp default current_timestamp);

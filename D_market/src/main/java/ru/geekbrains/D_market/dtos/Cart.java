@@ -32,10 +32,11 @@ public class Cart {
     public void addProductToCart(Product product){
         CartItem item = new CartItem(product.getId(), product.getTitle(), 1, product.getPrice(), product.getPrice());
         for (int i = 0; i < items.size(); i++) {
-                if (items.get(i).getProductId() == product.getId()) {
+                if (items.get(i).getProductId().equals(product.getId())) {
                     int tmpQuantity = items.get(i).getQuantity();
                     tmpQuantity++;
                     items.get(i).setQuantity(tmpQuantity);
+                    items.get(i).setPrice(tmpQuantity * items.get(i).getPricePerProduct());
                     recalculate();
                     return;
                 }

@@ -15,13 +15,13 @@
             <td>{{item.productTitle}}</td>
             <td>{{item.pricePerProduct.toFixed(2)}}</td>
             <td>
-                <button class="btn btn-primary" ng-click="changeQuantity(item.productId, -1)">-</button>
+                <button class="btn btn-secondary" ng-click="changeQuantity(item.productId, -1)">-</button>
                     {{item.quantity}}
-                <button class="btn btn-primary" ng-click="changeQuantity(item.productId, 1)">+</button>
+                <button class="btn btn-secondary" ng-click="changeQuantity(item.productId, 1)">+</button>
             </td>
             <td>{{item.quantity * item.price.toFixed(2)}}</td>
             <td>
-                <button class="btn btn-secondary" ng-click="deleteProduct(item.productId)">Удалить</button>
+                <button class="btn btn-danger" ng-click="deleteProduct(item.productId)">Удалить</button>
                 <button class="btn btn-secondary" ng-click="navToInfoPage(item.productId)">Информация</button>
             </td>
         </tr>
@@ -36,6 +36,6 @@
     <p></p>
     <button class="btn btn-secondary" ng-click="navToStorePage()">В каталог</button>
     <button class="btn btn-secondary" ng-click="clearCart()">Очистить корзину</button>
-    <button class="btn btn-lg btn-danger" ng-click="checkOut()" >Оплатить</button>
+    <button class="btn btn-lg btn-danger" ng-click="order()" >Оформить заказ</button>
     <p></p>
 </div>

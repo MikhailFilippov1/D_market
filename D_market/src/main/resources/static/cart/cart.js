@@ -65,5 +65,10 @@ angular.module('market-front').controller('cartController', function ($scope, $h
            });
        };
 
+       $scope.order = function(){
+           $http.post(contextPath + 'api/V1/orders');
+           $location.path('/store');
+       }
+
      $scope.loadCart();
 });
