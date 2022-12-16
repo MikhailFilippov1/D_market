@@ -1,4 +1,4 @@
-angular.module('market-front').controller('cartController', function ($scope, $http, $location){
+angular.module('market-front').controller('cartController', function ($scope, $http, $location, $localStorage){
     const contextPath = 'http://localhost:5555/cart/';
     let currentPageIndex = 1;
 
@@ -20,7 +20,7 @@ angular.module('market-front').controller('cartController', function ($scope, $h
 
     $scope.loadCart = function () {
         $http ({
-            url: contextPath + 'api/V1/cart',
+            url: contextPath + 'api/V1/cart/' + $localStorage.marketGuestCartId,
             method: 'GET',
         }).then(function successCallback(response){
             $scope.cart = response.data;
@@ -44,7 +44,7 @@ angular.module('market-front').controller('cartController', function ($scope, $h
 
     $scope.clearCart = function (){
              $http({
-                 url: contextPath + 'api/V1/cart/clear',
+                 url: contextPath + 'api/V1/cart/' + $localStorage.marketGuestCartId + '/clear/',
                  method: 'GET',
              }).then(function (response){
                  $scope.loadCart();
@@ -53,7 +53,7 @@ angular.module('market-front').controller('cartController', function ($scope, $h
 
      $scope.deleteProduct = function (productId){
              $http({
-                 url: contextPath + 'api/V1/cart/clear/' + productId,
+                 url: contextPath + 'api/V1/cart/' + $localStorage.marketGuestCartId + '/clear/' + productId,
                  method: 'GET',
 
              }).then(function (response){
@@ -61,17 +61,9 @@ angular.module('market-front').controller('cartController', function ($scope, $h
              });
      }
 
-     $scope.checkOut = function(){
-            alert('Денег НЕТ! Но вы держитесь.');
-            }
-
-       $scope.navToStorePage = function(){
-               $location.path('/store');
-           }
-
    $scope.changeQuantity = function (productId, delta){
            $http ({
-               url: contextPath + 'api/V1/cart/changeQuantity',
+               url: contextPath + 'api/V1/cart/' + $localStorage.marketGuestCartId + '/changeQuantity',
                method: 'GET',
                params: {
                    productId: productId,

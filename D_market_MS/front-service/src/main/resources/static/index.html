@@ -38,6 +38,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#!/cart" style="font-weight: bold;">Корзина</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#!/order" style="font-weight: bold;">Заказы</a>
+                        </li>
                         <li class="nav-item" ng-show="isUserLoggedIn()" style="font-weight: bold; pudding:4px;">
                             <button class="btn btn-outline-secondary btn-sm" ng-click="tryToLogout()">Выйти</button>
                         </li>
@@ -52,12 +55,13 @@
         <ng-view></ng-view>
     </div>
         <script src="index.js"></script>
-        <script src="store/store.js"></script>
         <script src="start/start.js"></script>
+        <script src="store/store.js"></script>
         <script src="edit/edit.js"></script>
         <script src="info/info.js"></script>
         <script src="create/create.js"></script>
         <script src="cart/cart.js"></script>
- <!--          <script src="reg/reg.js"></script> -->
+        <script src="order/order.js"></script>
+        <script src="orderItem/orderItem.js"></script>
 </body>
 </html>

@@ -1,0 +1,45 @@
+<div>
+    <table class="table table-hover">
+        <thead>
+        <h3>ЗАКАЗ № {{mmm}}</h3>
+        <tr>
+            <td>Наименование продукта</td>
+            <td>Количество</td>
+            <td>Цена (руб. коп.)</td>
+            <td>Сумма (руб. коп.)</td>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="o in orderItemPage.content">
+            <td>{{o.productTitle}}</td>
+            <td>{{o.quantity}}</td>
+            <td>{{o.pricePerProduct}}</td>
+            <td>{{o.price}}</td>
+            </td>
+            <td>
+                <button class="btn btn-secondary" ng-click="navToInfoPage(o.id)">Информация</button>
+                <button class="btn btn-secondary" ng-click="deleteOrderItem(o.id)">Удалить</button>
+            </td>
+        </tr>
+<!--        <tr>
+            <td style="font-weight: bold;">ИТОГО:</td>
+            <td></td>
+            <td></td>
+            <td style="font-weight: bold;">{{cart.totalPrice.toFixed(2)}}</td>
+        </tr>-->
+        </tbody>
+    </table>
+    <p></p>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li class="page-item" ng-repeat="pageIndex in paginationArray">
+                <button class="page-link" ng-click="loadOrderItems(pageIndex)">{{pageIndex}}</button>
+            </li>
+        </ul>
+    </nav>
+    <p></p>
+    <button class="btn btn-secondary" ng-click="navToOrderPage()">К заказам</button>
+    <button class="btn btn-danger" ng-click="clear()">Удалить заказ</button>
+    <p></p>
+</div>
