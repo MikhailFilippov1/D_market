@@ -5,10 +5,11 @@ angular.module('market-front').controller('orderController', function ($scope, $
     $scope.loadOrders = function (pageIndex = 1) {
         currentPageIndex = pageIndex;
         $http ({
-            url: contextPath + 'api/V1/orders',
+            url: contextPath + 'api/V1/orders/' + $localStorage.MarketUser.username,
             method: 'GET',
             params: {
-                p: pageIndex
+                p: pageIndex,
+
                 }
         }).then(function(response){
             $scope.orderPage = response.data;
@@ -38,7 +39,6 @@ angular.module('market-front').controller('orderController', function ($scope, $
              $http({
                  url: contextPath + 'api/V1/orders/clear/' + order.id,
                  method: 'GET',
-
              }).then(function (response){
                  $scope.loadOrders(currentPageIndex);
              });

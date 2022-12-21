@@ -13,9 +13,8 @@ angular.module('market-front').controller('orderItemController', function ($scop
         }).then(function(response){
             $scope.orderItemPage = response.data;
             $scope.paginationArray = $scope.generatePagesIndexes(1, $scope.orderItemPage.totalPages);
-//            $scope.mmm = $scope.orderItemPage.orderId;
-            $scope.mmm = $routeParams.orderId;
-            console.log('Информация по  заказу №' + $scope.mmm);
+            $scope.id = $routeParams.orderId;
+            console.log('Информация по  заказу №' + $scope.id);
             });
     }
 
@@ -30,30 +29,6 @@ angular.module('market-front').controller('orderItemController', function ($scop
      $scope.navToOrderPage = function(){
                     $location.path('/order');
                 }
-
-//     $scope.navToInfoPage = function(productId){
-//          console.log('Переход в окно информации');
-//             $location.path('/info/' + productId);
-//          }
-
-//     $scope.deleteOrderItem = function (order){
-//             $http({
-//                 url: contextPath + 'api/V1/orders/clear/' + order.id,
-//                 method: 'GET',
-//
-//             }).then(function (response){
-//                 $scope.loadOrders(currentPageIndex);
-//             });
-//     }
-//
-//    $scope.clear = function (){
-//             $http({
-//                 url: contextPath + 'api/V1/orders',
-//                 method: 'DELETE',
-//             }).then(function (response){
-//                 $scope.loadOrders();
-//             });
-//         }
 
      $scope.loadOrderItems();
 });

@@ -1,0 +1,14 @@
+<div>
+    <h3>Регистрация</h3>
+    <form novalidate ng-submit = "register()">
+        <input class="form-control" type="text" placeholder="Имя" ng-model="reguser.username">
+        <p></p>
+        <input class="form-control" type="password" placeholder="Пароль" ng-model="reguser.password">
+        <p></p>
+        <input class="form-control" type="password" placeholder="Подтверждение пароля" ng-model="reguser.confirmPassword">
+        <p></p>
+        <input class="form-control" type="text" placeholder="E Mail" ng-model="reguser.email">
+        <p></p>
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    </form>
+</div>
