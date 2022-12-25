@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин "ЗА УГЛОМ"</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
+</head>
+
+<body ng-app="market-front">
+    <div class="container" >
+        <div ng-controller="indexController">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#!/" style="font-weight: bold;">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#!/store" style="font-weight: bold;">КАТАЛОГ</a>
+                        </li>
+                        <li class="nav-item" ng-show="!isUserLoggedIn()">
+                            <form class="align-middle"  ng-submit = "tryToAuth()">
+                                <div class="input-group input-group-sn" style="padding: 4px;">
+                                    <input id="navLoginField" class="form-control" type="text"  placeholder="login" ng-model="user.username" aria-describedby="inputGroup-sizing-sm" style="margin-left: 10px;">
+                                    <p></p>
+                                    <input id="navPasswordField" class="form-control" type="password" placeholder="password" ng-model="user.password" aria-describedby="inputGroup-sizing-sm" style="margin-left: 10px;">
+                                    <p></p>
+                                    <button id="navLoginSubmit" type="submit" class="btn btn-outline-warning btn-sm" style="margin-left: 10px;">Войти</button>
+                                </div>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#!/cart" style="font-weight: bold;">Корзина</a>
+                        </li>
+                        <li class="nav-item" ng-show="isUserLoggedIn()" style="font-weight: bold; pudding:4px;">
+                            <button class="btn btn-outline-secondary btn-sm" ng-click="tryToLogout()">Выйти</button>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+        <ng-view></ng-view>
+    </div>
+        <script src="index.js"></script>
+        <script src="store/store.js"></script>
+        <script src="start/start.js"></script>
+        <script src="edit/edit.js"></script>
+        <script src="info/info.js"></script>
+        <script src="create/create.js"></script>
+        <script src="cart/cart.js"></script>
+ <!--          <script src="reg/reg.js"></script> -->
+</body>
+</html>
