@@ -15,6 +15,7 @@ import ru.geekbrains.D_market.core.models.Order;
 import ru.geekbrains.D_market.core.models.Product;
 import ru.geekbrains.D_market.core.repositories.OrderRepository;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -42,13 +43,13 @@ public class OrderServiceTest {
         cartItemDto.setProductId(777L);
         cartItemDto.setProductTitle("VINE");
         cartItemDto.setQuantity(1);
-        cartItemDto.setPricePerProduct(777);
-        cartItemDto.setPrice(777);
+        cartItemDto.setPricePerProduct(BigDecimal.valueOf(777));
+        cartItemDto.setPrice(BigDecimal.valueOf(777));
 
-        cartDto.setTotalPrice(777);
+        cartDto.setTotalPrice(BigDecimal.valueOf(777));
         cartDto.setItems(items);
 
-        Mockito.doReturn(cartDto).when(cartServiceIntegration).getCurrentCart();
+        Mockito.doReturn(cartDto).when(cartServiceIntegration).getCurrentCart(null);
 
         Category category = new Category();
         category.setId(1L);
@@ -56,13 +57,13 @@ public class OrderServiceTest {
         Product product = new Product();
         product.setId(777L);
         product.setTitle("Vine");
-        product.setPrice(777);
+        product.setPrice(BigDecimal.valueOf(777));
         product.setCategory(category);
 
         Mockito.doReturn(Optional.of(product)).when(productService).findById(777L);
 
         Order order = orderService.createOrder("Zoe");
-        Assertions.assertEquals(order.getTotalPrice(), 777);
+        Assertions.assertEquals(order.getTotalPrice(), BigDecimal.valueOf(777));
         Mockito.verify(orderRepository,Mockito.times(1)).save(ArgumentMatchers.any());
     }
 }

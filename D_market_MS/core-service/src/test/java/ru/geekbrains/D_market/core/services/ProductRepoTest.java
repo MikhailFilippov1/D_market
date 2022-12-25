@@ -9,6 +9,7 @@ import org.springframework.test.context.ActiveProfiles;
 import ru.geekbrains.D_market.core.models.Product;
 import ru.geekbrains.D_market.core.repositories.ProductRepository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @DataJpaTest
@@ -25,7 +26,7 @@ public class ProductRepoTest {
         Product product = new Product();
 //        product.setId(20L); TODO: Не работает, пишет: detached entity passed to persist
         product.setTitle("Beer");
-        product.setPrice(333);
+        product.setPrice(BigDecimal.valueOf(333));
 
         entityManager.persist(product);
         entityManager.flush();

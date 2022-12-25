@@ -51,7 +51,7 @@ angular.module('market-front').controller('storeController', function ($scope, $
 
      $scope.addToCart = function (product){
                   $http({
-                      url: 'http://localhost:5555/cart/api/V1/cart/add/' + product.id,
+                      url: 'http://localhost:5555/cart/api/V1/cart/' + $localStorage.marketGuestCartId +'/add/' + product.id,
                       method: 'GET',
 
                   }).then(function (response){

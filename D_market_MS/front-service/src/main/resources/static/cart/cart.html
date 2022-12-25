@@ -13,13 +13,13 @@
         <tbody>
         <tr ng-repeat="item in cart.items">
             <td>{{item.productTitle}}</td>
-            <td>{{item.pricePerProduct.toFixed(2)}}</td>
+            <td>{{item.pricePerProduct}}</td>
             <td>
                 <button class="btn btn-secondary" ng-click="changeQuantity(item.productId, -1)">-</button>
                     {{item.quantity}}
                 <button class="btn btn-secondary" ng-click="changeQuantity(item.productId, 1)">+</button>
             </td>
-            <td>{{item.quantity * item.pricePerProduct.toFixed(2)}}</td>
+            <td>{{(item.quantity * item.pricePerProduct).toFixed(2)}}</td>
             <td>
                 <button class="btn btn-danger" ng-click="deleteProduct(item.productId)">Удалить</button>
                 <button class="btn btn-secondary" ng-click="navToInfoPage(item.productId)">Информация</button>
@@ -29,7 +29,7 @@
             <td style="font-weight: bold;">ИТОГО:</td>
             <td></td>
             <td></td>
-            <td style="font-weight: bold;">{{cart.totalPrice.toFixed(2)}}</td>
+            <td style="font-weight: bold;">{{cart.totalPrice}}</td>
         </tr>
         </tbody>
     </table>

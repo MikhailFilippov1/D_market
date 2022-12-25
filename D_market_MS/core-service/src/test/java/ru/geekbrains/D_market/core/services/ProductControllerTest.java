@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import ru.geekbrains.D_market.core.models.Product;
 import ru.geekbrains.D_market.core.repositories.ProductRepository;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,7 +37,7 @@ public class ProductControllerTest {
         Product product = new Product();
         product.setId(1L);
         product.setTitle("Beer");
-        product.setPrice(333);
+        product.setPrice(BigDecimal.valueOf(333));
 
         List<Product> productList = new ArrayList<>(Arrays.asList(product));
 
