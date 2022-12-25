@@ -1,7 +1,7 @@
 <div>
     <table class="table table-hover">
         <thead>
-        <h3>ЗАКАЗ № {{mmm}}</h3>
+        <h3>ЗАКАЗ № {{id}}</h3>
         <tr>
             <td>Наименование продукта</td>
             <td>Количество</td>
@@ -17,17 +17,7 @@
             <td>{{o.pricePerProduct}}</td>
             <td>{{o.price}}</td>
             </td>
-            <td>
-                <button class="btn btn-secondary" ng-click="navToInfoPage(o.id)">Информация</button>
-                <button class="btn btn-secondary" ng-click="deleteOrderItem(o.id)">Удалить</button>
-            </td>
         </tr>
-<!--        <tr>
-            <td style="font-weight: bold;">ИТОГО:</td>
-            <td></td>
-            <td></td>
-            <td style="font-weight: bold;">{{cart.totalPrice.toFixed(2)}}</td>
-        </tr>-->
         </tbody>
     </table>
     <p></p>
@@ -40,6 +30,5 @@
     </nav>
     <p></p>
     <button class="btn btn-secondary" ng-click="navToOrderPage()">К заказам</button>
-    <button class="btn btn-danger" ng-click="clear()">Удалить заказ</button>
     <p></p>
 </div>
