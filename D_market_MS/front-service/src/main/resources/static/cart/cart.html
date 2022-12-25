@@ -34,6 +34,13 @@
         </tbody>
     </table>
     <p></p>
+ <!--   <nav aria-label="Page navigation">  //TODO:pagination for cart
+        <ul class="pagination">
+            <li class="page-item" ng-repeat="pageIndex in paginationArray">
+                <button class="page-link" ng-click="loadCart(pageIndex)">{{pageIndex}}</button>
+            </li>
+        </ul>
+    </nav> -->
     <button class="btn btn-secondary" ng-click="navToStorePage()">В каталог</button>
     <button class="btn btn-secondary" ng-click="clearCart()">Очистить корзину</button>
     <button class="btn btn-lg btn-danger" ng-click="order()" >Оформить заказ</button>
