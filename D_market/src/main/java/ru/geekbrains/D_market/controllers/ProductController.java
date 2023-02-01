@@ -6,10 +6,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.geekbrains.D_market.dtos.Cart;
-import ru.geekbrains.D_market.models.Category;
+import ru.geekbrains.D_market.converters.ProductConverter;
+import ru.geekbrains.D_market.converters.ProductMapper;
 import ru.geekbrains.D_market.models.Product;
-import ru.geekbrains.D_market.services.CategoryService;
 import ru.geekbrains.D_market.services.ProductService;
 import ru.geekbrains.D_market.dtos.ProductDto;
 import ru.geekbrains.D_market.exceptions.DataValidationException;
@@ -23,7 +22,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/V1/products")
 public class ProductController<ResponseEntity> {
     private final ProductService productService;
-    private final CategoryService categoryService;
+    private final ProductConverter productConverter;
+    private final ProductMapper productMapper;
 
     @GetMapping
     public Page<ProductDto> findAll(@RequestParam(defaultValue = "1", name = "p") int pageIndex
@@ -42,7 +42,11 @@ public class ProductController<ResponseEntity> {
     @GetMapping("/{id}")
     public ProductDto findById(@PathVariable Long id){
         Product product = productService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product id: " + id + " not found"));
-        return new ProductDto(product);
+
+        return productMapper.fromProduct(product);
+//        return ProductMapper.MAPPER.fromProduct(product);
+
+ //       return productConverter.entityToDto(product);
     }
 
     @PostMapping
@@ -50,13 +54,12 @@ public class ProductController<ResponseEntity> {
         if(bindingResult.hasErrors()){
             throw new DataValidationException(bindingResult.getAllErrors().stream().map(ObjectError::getDefaultMessage).collect(Collectors.toList()));
         }
-        Product product = new Product();
-        product.setTitle(productDto.getTitle());
-        product.setPrice(productDto.getPrice());
-        Category category = categoryService.findByTitle(productDto.getCategoryTitle()).orElseThrow(() -> new ResourceNotFoundException("Category title: " + productDto.getCategoryTitle() + " not found"));
-        product.setCategory(category);
-        productService.save(product);
-        return new ProductDto(product);
+        Product product = productService.createNewProduct(productDto);
+
+        return productMapper.fromProduct(product);
+//        return ProductMapper.MAPPER.fromProduct(product);
+
+ //       return productConverter.entityToDto(product);
     }
 
     @PutMapping

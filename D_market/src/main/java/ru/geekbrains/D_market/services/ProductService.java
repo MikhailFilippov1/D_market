@@ -26,24 +26,24 @@ public class ProductService {
         return productRepository.findAll(PageRequest.of(pageIndex, pageSize));
     }
 
-    public Page<Product> find(Integer p, Integer minPrice, Integer maxPrice, String titlePart){
-        Specification<Product> specification = Specification.where(null);
-
-        // select p from Product p where true and p > minPrice
-        if(minPrice != null){
-            specification = specification.and(ProductSpecification.priceGreaterOrElseThen(minPrice));
-        }
-        // select p from Product p where true and p < maxPrice
-        if(maxPrice != null){
-            specification = specification.and(ProductSpecification.priceLessOrElseThen(maxPrice));
-        }
-        // select p from Product p where true and like &titlePart&
-        if(titlePart != null){
-            specification = specification.and(ProductSpecification.titleLike(titlePart));
-        }
-
-        return productRepository.findAll(PageRequest.of(p - 1, 5));
-    }
+//    public Page<Product> find(Integer p, Integer minPrice, Integer maxPrice, String titlePart){
+//        Specification<Product> specification = Specification.where(null);
+//
+//        // select p from Product p where true and p > minPrice
+//        if(minPrice != null){
+//            specification = specification.and(ProductSpecification.priceGreaterOrElseThen(minPrice));
+//        }
+//        // select p from Product p where true and p < maxPrice
+//        if(maxPrice != null){
+//            specification = specification.and(ProductSpecification.priceLessOrElseThen(maxPrice));
+//        }
+//        // select p from Product p where true and like &titlePart&
+//        if(titlePart != null){
+//            specification = specification.and(ProductSpecification.titleLike(titlePart));
+//        }
+//
+//        return productRepository.findAll(PageRequest.of(p - 1, 5));
+//    }
 
     public Optional<Product> findById(Long id){
         return productRepository.findById(id);
@@ -51,6 +51,16 @@ public class ProductService {
 
     public Product save(Product product){
         return productRepository.save(product);
+    }
+
+    public Product createNewProduct(ProductDto productDto){
+        Product product = new Product();
+        product.setTitle(productDto.getTitle());
+        product.setPrice(productDto.getPrice());
+        Category category = categoryService.findByTitle(productDto.getCategoryTitle()).orElseThrow(() -> new ResourceNotFoundException("Category title: " + productDto.getCategoryTitle() + " not found"));
+        product.setCategory(category);
+        productRepository.save(product);
+        return product;
     }
 
     public void deleteById(Long id){
